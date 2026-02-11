@@ -16,7 +16,7 @@ This repository is designed to be used as a **GitHub Template**. It includes a p
 * **Automated Setup:** A Python script (`setup_wizard.py`) that handles:
     * Renaming `package.json` fields (name, displayName, urls).
     * Renaming `.asmdef` files and their internal References.
-    * Refactoring C# Namespaces (e.g., `HoangTuDongAnh.UP.Template` → `HoangTuDongAnh.UP.YourSystem`).
+    * Refactoring C# Namespaces (e.g., `HoangTuDongAnh.UP.Common` → `HoangTuDongAnh.UP.YourSystem`).
     * Self-destruction after setup is complete.
 * **Git Ready:** properly configured `.gitignore` for Unity Packages.
 

@@ -1,13 +1,13 @@
 {
-  "name": "com.hoangtudonganh.up-name",
+  "name": "com.hoangtudonganh.up-common",
   "version": "0.0.1",
-  "displayName": "HTDA – UP <DisplayName>",
+  "displayName": "HTDA – UP Common",
   "description": "A robust starter template for creating Unity Packages in the HoangTuDongAnh ecosystem.",
   "unity": "6000.0",
   "unityRelease": "0f1",
-  "documentationUrl": "https://github.com/HoangTuDongAnh/UP-Template",
-  "changelogUrl": "https://github.com/HoangTuDongAnh/UP-Template/blob/main/CHANGELOG.md",
-  "licensesUrl": "https://github.com/HoangTuDongAnh/UP-Template/blob/main/LICENSE.md",
+  "documentationUrl": "https://github.com/HoangTuDongAnh/UP-Common",
+  "changelogUrl": "https://github.com/HoangTuDongAnh/UP-Common/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/HoangTuDongAnh/UP-Common/blob/main/LICENSE.md",
   "license": "MIT",
   "author": {
     "name": "HoangTuDongAnh",
