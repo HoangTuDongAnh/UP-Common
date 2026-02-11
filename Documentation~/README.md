@@ -1,7 +1,5 @@
 # UP-Common — Documentation (Tiếng Việt)
 
-Tài liệu này được sinh tự động từ source trong `Scripts.zip`, sau đó bổ sung mô tả/usage cho các module quan trọng.
-
 - Ngày sinh docs: **2026-02-11**
 - Cấu trúc trình bày: **theo folder** của package
 
@@ -17,5 +15,3 @@ Tài liệu này được sinh tự động từ source trong `Scripts.zip`, sau
   - [Tools](Editor/Tools/README.md)
   - [Generators](Editor/Generators/README.md)
   - [Settings](Editor/Settings/README.md)
-
-> Nếu bạn publish theo chuẩn Unity Package, hãy đặt folder này vào `Documentation~/`.
