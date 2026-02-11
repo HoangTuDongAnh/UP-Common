@@ -1,0 +1,31 @@
+# Cây thư mục (tham khảo)
+
+```text
+Runtime/
+  Attributes/
+  Extensions/
+    Collections/
+    Math/
+    System/
+    Unity/
+  Patterns/
+    Command/
+    Observer/
+    Pooling/
+    Singleton/
+    StateMachine/
+  Utilities/
+    Data/
+    IO/
+    Logging/
+    Platform/
+    Safety/
+    Services/
+    Threading/
+    Time/
+Editor/
+  Generators/
+  PropertyDrawers/
+  Settings/
+  Tools/
+```
