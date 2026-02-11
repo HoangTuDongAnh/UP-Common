@@ -1,7 +1,7 @@
 {
   "name": "com.hoangtudonganh.up-common",
   "version": "0.0.1",
-  "displayName": "HTDA – UP Common",
+  "displayName": "UP Common",
   "description": "A robust starter template for creating Unity Packages in the HoangTuDongAnh ecosystem.",
   "unity": "6000.0",
   "unityRelease": "0f1",
