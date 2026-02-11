@@ -3,39 +3,49 @@
 namespace HoangTuDongAnh.UP.Common.Patterns.Singleton
 {
     /// <summary>
+    /// Non-generic runtime reset entry for MonoSingleton<T>.
+    /// </summary>
+    internal static class MonoSingletonRuntime
+    {
+        private static readonly System.Collections.Generic.List<System.Action> _resetters
+            = new System.Collections.Generic.List<System.Action>(32);
+
+        internal static void RegisterReset(System.Action reset)
+        {
+            if (reset == null) return;
+            _resetters.Add(reset);
+        }
+
+        internal static void Reset()
+        {
+            for (int i = _resetters.Count - 1; i >= 0; i--)
+            {
+                try { _resetters[i]?.Invoke(); }
+                catch { /* ignore */ }
+            }
+        }
+    }
+
+    /// <summary>
     /// MonoBehaviour singleton.
-    /// - Finds existing instance or creates one.
-    /// - Optional DontDestroyOnLoad.
-    /// - Safe with "Disable Domain Reload" play mode.
+    /// - Finds existing instance, or creates one.
+    /// - Optional persistent across scenes.
     /// </summary>
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         private static T _instance;
         private static readonly object _lock = new object();
         private static bool _isQuitting;
+        private static bool _resetRegistered;
 
         /// <summary>
-        /// True if an instance already exists.
+        /// Override if you don't want DontDestroyOnLoad.
         /// </summary>
-        public static bool HasInstance => _instance != null;
+        protected virtual bool ShouldPersistAcrossScenes => true;
 
         /// <summary>
-        /// Get instance if exists, otherwise null (no auto-create).
-        /// </summary>
-        public static T TryGetInstance()
-        {
-            if (_isQuitting) return null;
-
-#if UNITY_2022_2_OR_NEWER
-            return _instance != null ? _instance : Object.FindFirstObjectByType<T>();
-#else
-            return _instance != null ? _instance : Object.FindObjectOfType<T>();
-#endif
-        }
-
-        /// <summary>
-        /// Global access (auto-create if needed).
-        /// Returns null while quitting.
+        /// Global access to the singleton instance.
+        /// Returns null while quitting (avoid ghost objects).
         /// </summary>
         public static T Instance
         {
@@ -47,11 +57,16 @@ namespace HoangTuDongAnh.UP.Common.Patterns.Singleton
                 {
                     if (_instance != null) return _instance;
 
-                    _instance = TryGetInstance();
+                    EnsureResetRegistered();
+
+#if UNITY_2022_2_OR_NEWER
+                    _instance = Object.FindFirstObjectByType<T>();
+#else
+                    _instance = Object.FindObjectOfType<T>();
+#endif
 
                     if (_instance == null)
                     {
-                        // Create a new GameObject if none exists.
                         var go = new GameObject($"{typeof(T).Name} (Singleton)");
                         _instance = go.AddComponent<T>();
 
@@ -64,22 +79,27 @@ namespace HoangTuDongAnh.UP.Common.Patterns.Singleton
             }
         }
 
-        /// <summary>
-        /// Override to disable DontDestroyOnLoad.
-        /// </summary>
-        protected virtual bool ShouldPersistAcrossScenes => true;
+        public static bool HasInstance => _instance != null;
+
+        private static void EnsureResetRegistered()
+        {
+            if (_resetRegistered) return;
+            _resetRegistered = true;
+
+            MonoSingletonRuntime.RegisterReset(() =>
+            {
+                _instance = null;
+                _isQuitting = false;
+                _resetRegistered = false;
+            });
+        }
 
         /// <summary>
         /// Ensures only one instance exists.
         /// </summary>
         protected virtual void Awake()
         {
-            if (_isQuitting)
-            {
-                // Avoid resurrecting while quitting.
-                Destroy(gameObject);
-                return;
-            }
+            EnsureResetRegistered();
 
             if (_instance == null)
             {
@@ -88,24 +108,17 @@ namespace HoangTuDongAnh.UP.Common.Patterns.Singleton
                 if (ShouldPersistAcrossScenes)
                     DontDestroyOnLoad(gameObject);
 
-                OnSingletonAwake();
                 return;
             }
 
             if (_instance != this)
             {
-                // Keep the first instance, destroy duplicates.
                 Destroy(gameObject);
             }
         }
 
         /// <summary>
-        /// Optional hook after instance is assigned.
-        /// </summary>
-        protected virtual void OnSingletonAwake() { }
-
-        /// <summary>
-        /// Mark quitting to prevent new instance creation.
+        /// Marks quitting to prevent new instance creation.
         /// </summary>
         protected virtual void OnApplicationQuit()
         {
@@ -113,21 +126,12 @@ namespace HoangTuDongAnh.UP.Common.Patterns.Singleton
         }
 
         /// <summary>
-        /// Clear static ref when instance is destroyed.
+        /// Clear instance if this object is the current singleton.
         /// </summary>
         protected virtual void OnDestroy()
         {
-            if (_instance == this) _instance = null;
-        }
-
-        /// <summary>
-        /// Reset static fields when domain reload is disabled.
-        /// </summary>
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics()
-        {
-            _instance = null;
-            _isQuitting = false;
+            if (_instance == this)
+                _instance = null;
         }
     }
 }

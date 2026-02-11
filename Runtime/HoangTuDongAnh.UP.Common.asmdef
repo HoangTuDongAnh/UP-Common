@@ -1,6 +1,6 @@
 {
-    "name": "HoangTuDongAnh.UP.Template",
-    "rootNamespace": "HoangTuDongAnh.UP.Template",
+    "name": "HoangTuDongAnh.UP.Common",
+    "rootNamespace": "HoangTuDongAnh.UP.Common",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

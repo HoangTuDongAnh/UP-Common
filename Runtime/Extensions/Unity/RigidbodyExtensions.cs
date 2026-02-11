@@ -13,9 +13,9 @@ namespace HoangTuDongAnh.UP.Common.Extensions.Unity
         public static void SetVelocityX(this Rigidbody rb, float x)
         {
             if (rb == null) return;
-            var v = rb.velocity;
+            var v = rb.linearVelocity;
             v.x = x;
-            rb.velocity = v;
+            rb.linearVelocity = v;
         }
 
         /// <summary>
@@ -24,9 +24,9 @@ namespace HoangTuDongAnh.UP.Common.Extensions.Unity
         public static void SetVelocityY(this Rigidbody rb, float y)
         {
             if (rb == null) return;
-            var v = rb.velocity;
+            var v = rb.linearVelocity;
             v.y = y;
-            rb.velocity = v;
+            rb.linearVelocity = v;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace HoangTuDongAnh.UP.Common.Extensions.Unity
         public static void ResetMotion(this Rigidbody rb)
         {
             if (rb == null) return;
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
 
