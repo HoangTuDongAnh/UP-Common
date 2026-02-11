@@ -1,10 +1,13 @@
 # Editor
 
-Toàn bộ code trong `Editor/` chỉ chạy trong Unity Editor (không vào build).  
-Mục tiêu Phase 4:
-- Inspector đẹp hơn (PropertyDrawers)
-- Menu tools hỗ trợ workflow
-- Generators (tạo code nhanh)
-- Settings trong Project Settings
+`Editor/` chứa code chỉ chạy trong Unity Editor (không vào build).
 
-> Nếu bạn dùng asmdef: Editor asmdef cần reference Runtime asmdef.
+## Nhóm
+- PropertyDrawers: vẽ Inspector cho Runtime Attributes
+- Tools: menu tools hỗ trợ workflow
+- Generators: tool generate code
+- Settings: SettingsProvider / cấu hình project
+
+## Lưu ý quan trọng
+- File Editor bắt buộc nằm trong folder `Editor/` (hoặc asmdef Editor-only)
+- Tránh trùng `MenuItem` path (Unity sẽ báo conflict)

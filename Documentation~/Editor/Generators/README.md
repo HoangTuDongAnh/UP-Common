@@ -1,13 +1,8 @@
 # Editor/Generators
 
-## Mục tiêu
-Các tool tạo code nhanh (giảm thao tác thủ công).
+Editor module `Generators`.
 
-## Scripts
-- `EnumGeneratorWindow.cs`
-
-## EnumGeneratorWindow
-- Nhập enum name + items (mỗi dòng 1 item)
-- Generate code và copy vào clipboard.
-
-> Tip: bạn có thể mở rộng tool này để xuất ra file `.cs` trong folder bạn chọn.
+## Danh sách script
+| Script | Mô tả ngắn |
+|---|---|
+| [EnumGeneratorWindow.cs](Editor/Generators/EnumGeneratorWindow.md) | EnumGeneratorWindow |

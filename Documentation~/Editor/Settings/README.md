@@ -1,13 +1,8 @@
 # Editor/Settings
 
-## Mục tiêu
-Expose cấu hình UP-Common trong **Project Settings**.
+Editor module `Settings`.
 
-## Scripts
-- `UPCommonSettingsProvider.cs`
-
-## UPCommonSettingsProvider
-- Hiển thị mục `Project Settings > UP-Common`
-- Cho phép chỉnh một số option (ví dụ log level)
-
-> Nếu muốn persist setting giữa các máy: nên dùng ScriptableObject + serialized file.
+## Danh sách script
+| Script | Mô tả ngắn |
+|---|---|
+| [UPCommonSettingsProvider.cs](Editor/Settings/UPCommonSettingsProvider.md) | UPCommonSettingsProvider |

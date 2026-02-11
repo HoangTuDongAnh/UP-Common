@@ -1,13 +1,14 @@
 # Runtime/Extensions
 
-Extensions là các hàm mở rộng (static) để code gọn hơn.  
-Nguyên tắc:
-- Không giữ state
-- Không phụ thuộc scene
-- Tránh side effects
+Extension methods giúp code gọn và dễ đọc hơn.
 
-## Nhóm extension
-- [Collections](Collections.md)
-- [Math](Math.md)
-- [System](System.md)
-- [Unity](Unity.md)
+## Nguyên tắc
+- Thuần (pure) nếu có thể, hạn chế side-effects
+- Tránh cấp phát bộ nhớ (GC) không cần thiết
+- Đặt tên rõ: `WithX`, `AddY`, `GetOrAdd`...
+
+## Nhóm
+- Collections
+- Math
+- System
+- Unity

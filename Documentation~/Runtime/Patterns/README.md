@@ -1,15 +1,11 @@
 # Runtime/Patterns
 
-`Patterns/` là các module kiến trúc (design patterns) dùng cho gameplay code.  
-Các pattern ở UP-Common ưu tiên:
-- API đơn giản
-- Dùng được cho dự án nhỏ & vừa
-- Ít phụ thuộc lẫn nhau, dễ mở rộng
+Các pattern dùng để chuẩn hoá kiến trúc và workflow code.  
+Tất cả pattern trong UP-Common được thiết kế để **dùng tốt cho dự án nhỏ & vừa**, dễ mở rộng và ít phụ thuộc lẫn nhau.
 
-## Danh sách pattern
-- [Singleton](Singleton.md)
-- [Observer](Observer.md)
-- [Command](Command.md)
-- [StateMachine](StateMachine.md)
-- [Pooling](Pooling.md)
-
+## Các module
+- `Singleton/`: singleton cho C# và MonoBehaviour
+- `Observer/`: event bus typed (publish/subscribe)
+- `Command/`: command + invoker (+ undoable)
+- `StateMachine/`: FSM đơn giản + transition
+- `Pooling/`: object pool manager
