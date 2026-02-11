@@ -1,0 +1,12 @@
+{
+    "name": "HoangTuDongAnh.UP.Common.Editor",
+    "rootNamespace": "HoangTuDongAnh.UP.Common.Editor",
+    "references": [
+        "HoangTuDongAnh.UP.Common" 
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
