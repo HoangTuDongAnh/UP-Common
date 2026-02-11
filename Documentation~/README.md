@@ -1,6 +1,6 @@
-# UP-Common — Tài liệu sử dụng (Tiếng Việt)
+# UP-Common — Tài liệu sử dụng
 
-> Bản tài liệu này được trình bày **theo cấu trúc thư mục** của package (không theo phase phát triển).  
+> Bản tài liệu này được trình bày **theo cấu trúc thư mục** của package.
 > Mục tiêu: bạn mở repo lên là tra được **folder nào chứa gì**, **mỗi script dùng để làm gì**, và **cách dùng nhanh**.
 
 - Ngày tạo docs: **2026-02-11**
